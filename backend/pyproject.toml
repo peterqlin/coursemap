@@ -1,0 +1,12 @@
+[project]
+name = "crash-a-class-backend"
+version = "0.1.0"
+description = "Backend for a live map of nearby classes using FastAPI and SQLite"
+authors = [{ name = "Peter Lin", email = "peter.lin2305@gmail.com" }]
+dependencies = [
+    "fastapi>=0.118.0",
+    "uvicorn>=0.37.0",
+]
+requires-python = ">=3.9"
+
+[tool.uv]
