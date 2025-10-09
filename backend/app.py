@@ -19,7 +19,7 @@ def get_classes(
     lat: float = Query(...),
     lon: float = Query(...),
     day: str = Query(...),
-    time_str: str = Query(...),
+    time: str = Query(...),
     radius: float = Query(200)  # meters
 ):
     conn = get_connection()
@@ -36,7 +36,7 @@ def get_classes(
         WHERE s.days LIKE ?
         AND time(?) BETWEEN time(s.start_time) AND time(s.end_time)
         AND b.latitude IS NOT NULL AND b.longitude IS NOT NULL
-        """, (f"%{day}%", time_str))
+        """, (f"%{day}%", time))
     
     rows = cur.fetchall()
     print(f"{radius=}")
