@@ -23,7 +23,7 @@ export default function ClassMarker({ classes }: Props) {
         <Marker position={[latitude, longitude]} icon={buildingIcon}>
             <Popup>
                 <div className="min-w-[200px] max-w-[250px]">
-                    <div className="font-bold text-lg mb-1">{building_name}</div>
+                    <div className="font-bold text-lg mb-2">{building_name}</div>
 
                     {classes.length > 1 && (
                         <div className="text-xs text-gray-500 mb-2">
@@ -31,21 +31,22 @@ export default function ClassMarker({ classes }: Props) {
                         </div>
                     )}
 
-                    <ul className="divide-y divide-gray-200 max-h-[200px] overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100 rounded-md">
+                    <div className="max-h-[200px] overflow-y-auto pr-1 flex flex-col gap-2 p-1">
                         {classes.map((cls) => (
-                            <li key={cls.section_id} className="p-2 bg-gray-100 rounded-md mb-1">
+                            <div className="p-2 bg-gray-200 rounded">
                                 <div className="font-semibold text-sm">
                                     {cls.subject} {cls.number}
                                 </div>
-                                <div className="text-xs text-gray-600">{cls.title}</div>
+                                <div className="text-xs text-gray-700">{cls.title}</div>
                                 <div className="text-xs text-gray-500">
                                     {toAmPm(cls.start_time)} – {toAmPm(cls.end_time)} {cls.room && `| ${cls.room}`}
                                 </div>
-                            </li>
+                            </div>
                         ))}
-                    </ul>
+                    </div>
                 </div>
             </Popup>
+
         </Marker>
 
     );
