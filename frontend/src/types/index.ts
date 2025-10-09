@@ -10,3 +10,8 @@ export interface ClassData {
     latitude: number;
     longitude: number;
 }
+
+export interface Location {
+    lat: number;
+    lon: number;
+}
