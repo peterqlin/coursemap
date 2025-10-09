@@ -32,7 +32,7 @@ export default function MapView() {
     const [mapPos, setMapPos] = useState<Location | null>(null);
     const lastFetchLocation = useRef<Location | null>(null);
 
-    // Helper: group classes by building coords
+    // Helper: group classes by building names
     const groupClasses = (data: ClassData[]) => {
         const grouped: Record<string, ClassData[]> = {};
         for (const cls of data) {
