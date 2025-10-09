@@ -24,7 +24,7 @@ def get_classes(
 ):
     conn = get_connection()
     cur = conn.cursor()
-    # example endpoint: http://127.0.0.1:8000/classes?lat=40.105757082531156&lon=-88.22811081179489&day=M&time_str=09:00&radius=50
+    # example endpoint: http://127.0.0.1:8000/classes?lat=40.105757082531156&lon=-88.22811081179489&day=M&time=09:00&radius=50
     cur.execute("""
         SELECT s.id AS section_id, c.id AS course_id,
                c.subject, c.number, c.title,

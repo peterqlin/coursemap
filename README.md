@@ -90,7 +90,7 @@ npm run dev
 2. **Nearby classes**
 
    * Automatically fetches classes happening near the user's location
-   * Uses backend endpoint `/classes?lat=..&lon=..&day=..&time_str=..`
+   * Uses backend endpoint `/classes?lat=..&lon=..&day=..&time=..`
 
 3. **Class stacking**
 
