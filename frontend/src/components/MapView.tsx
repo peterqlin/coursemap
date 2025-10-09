@@ -36,7 +36,7 @@ export default function MapView() {
     const groupClasses = (data: ClassData[]) => {
         const grouped: Record<string, ClassData[]> = {};
         for (const cls of data) {
-            const key = `${cls.latitude.toFixed(5)},${cls.longitude.toFixed(5)}`;
+            const key = cls.building_name;
             if (!grouped[key]) grouped[key] = [];
             grouped[key].push(cls);
         }
