@@ -13,7 +13,7 @@ import MoveArrows from "./MoveArrows";
 const USE_MOCKS = import.meta.env.VITE_USE_MOCKS === "true";
 
 const userIcon = L.icon({
-    iconUrl: "https://cdn-icons-png.flaticon.com/512/684/684908.png",
+    iconUrl: "/user.png",
     iconSize: [32, 32],
     iconAnchor: [16, 32],
 });
