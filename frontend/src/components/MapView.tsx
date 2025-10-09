@@ -105,6 +105,9 @@ export default function MapView() {
         <>
             <div style={{ position: "absolute", top: 20, left: 20, zIndex: 1000 }}>
                 <MoveArrows pos={mapPos} setPos={setMapPos} />
+                <h1 style={{ background: "black", color: "white", padding: "2px 6px", borderRadius: "4px" }}>
+                    {getCurrentDay()}, {getCurrentTime()}
+                </h1>
             </div>
             <MapContainer
                 center={[location.lat, location.lon]}
