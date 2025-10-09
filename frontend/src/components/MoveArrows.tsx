@@ -18,13 +18,25 @@ export default function MoveArrows({ pos, setPos }: MoveArrowsProps) {
 
     return (
         <div style={{ display: "grid", placeItems: "center", gap: 4 }}>
-            <button onClick={() => move("N")}>↑</button>
+            <button
+                style={{ background: "black", color: "white", padding: "6px 12px", border: "none", borderRadius: 4 }}
+                onClick={() => move("N")}
+            >↑</button>
             <div>
-                <button onClick={() => move("W")}>←</button>
-                <button onClick={() => move("E")}>→</button>
+                <button
+                    style={{ background: "black", color: "white", padding: "6px 12px", border: "none", borderRadius: 4 }}
+                    onClick={() => move("W")}
+                >←</button>
+                <button
+                    style={{ background: "black", color: "white", padding: "6px 12px", border: "none", borderRadius: 4 }}
+                    onClick={() => move("E")}
+                >→</button>
             </div>
-            <button onClick={() => move("S")}>↓</button>
-            {pos && <p style={{ background: "black", color: "white", padding: "2px 6px", borderRadius: "4px" }}>
+            <button
+                style={{ background: "black", color: "white", padding: "6px 12px", border: "none", borderRadius: 4 }}
+                onClick={() => move("S")}
+            >↓</button>
+            {pos && <p className="bg-black text-white px-2 py-1 rounded">
                 Lat: {pos.lat.toFixed(5)}, Lon: {pos.lon.toFixed(5)}
             </p>}
         </div>

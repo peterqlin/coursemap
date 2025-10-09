@@ -1,4 +1,5 @@
 export interface ClassData {
+    section_id: number;
     course_id: number;
     subject: string;
     number: string;
