@@ -7,9 +7,8 @@ import { createPortal } from "react-dom";
 
 const buildingIcon = L.icon({
     iconUrl: "https://cdn-icons-png.flaticon.com/512/684/684908.png",
-    iconSize: [28, 28],
-    iconAnchor: [14, 28],
-    popupAnchor: [0, -25],
+    iconSize: [64, 64],
+    iconAnchor: [32, 64],
 });
 
 interface Props {
@@ -66,7 +65,7 @@ export default function ClassMarker({ classes }: Props) {
                             </div>
 
                             {/* Class list */}
-                            <div className="overflow-y-auto max-h-[65vh] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-2">
+                            <div className="overflow-y-auto max-h-[55vh] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-2 scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-transparent">
                                 {classes.map((cls) => (
                                     <div
                                         key={cls.subject + cls.number + cls.section_type}
