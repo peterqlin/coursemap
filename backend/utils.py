@@ -18,8 +18,7 @@ def merge_sections(section_list):
     merged = []
     for section in section_list:
         key = (
-            section.get("subject"),
-            section.get("number"),
+            section.get("title"),
             section.get("start_time"),
             section.get("end_time"),
             section.get("section_type"),
