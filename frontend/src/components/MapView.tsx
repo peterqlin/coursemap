@@ -127,13 +127,9 @@ export default function MapView() {
             >
                 <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
-                {!USE_MOCKS && <Marker position={[location.lat, location.lon]} icon={userIcon}>
-                    <Popup>You are here</Popup>
-                </Marker>}
+                {!USE_MOCKS && <Marker position={[location.lat, location.lon]} icon={userIcon}></Marker>}
 
-                {USE_MOCKS && mapPos && <Marker position={[mapPos.lat, mapPos.lon]} icon={userIcon}>
-                    <Popup>You are here</Popup>
-                </Marker>}
+                {USE_MOCKS && mapPos && <Marker position={[mapPos.lat, mapPos.lon]} icon={userIcon}></Marker>}
 
                 {(() => {
                     console.debug("Class groups before rendering:", classGroups);
