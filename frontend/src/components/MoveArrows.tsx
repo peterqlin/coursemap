@@ -17,25 +17,28 @@ export default function MoveArrows({ pos, setPos }: MoveArrowsProps) {
     };
 
     return (
-        <div style={{ display: "grid", placeItems: "center", gap: 4 }}>
+        <div className="grid place-items-center gap-1">
             <button
-                style={{ background: "black", color: "white", padding: "6px 12px", border: "none", borderRadius: 4 }}
+                className="bg-black text-white w-6 h-6 flex items-center justify-center rounded"
                 onClick={() => move("N")}
             >↑</button>
-            <div>
+            <div className="flex gap-6">
                 <button
-                    style={{ background: "black", color: "white", padding: "6px 12px", border: "none", borderRadius: 4 }}
+                    className="bg-black text-white w-6 h-6 flex items-center justify-center rounded"
                     onClick={() => move("W")}
                 >←</button>
                 <button
-                    style={{ background: "black", color: "white", padding: "6px 12px", border: "none", borderRadius: 4 }}
+                    className="bg-black text-white w-6 h-6 flex items-center justify-center rounded"
                     onClick={() => move("E")}
                 >→</button>
             </div>
             <button
-                style={{ background: "black", color: "white", padding: "6px 12px", border: "none", borderRadius: 4 }}
+                className="bg-black text-white w-6 h-6 flex items-center justify-center rounded"
                 onClick={() => move("S")}
             >↓</button>
+            {pos && <p className="bg-black text-white px-2 py-1 rounded">
+                Lat: {pos.lat.toFixed(5)}, Lon: {pos.lon.toFixed(5)}
+            </p>}
         </div>
     );
 }
