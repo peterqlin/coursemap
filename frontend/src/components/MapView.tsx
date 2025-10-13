@@ -102,13 +102,7 @@ export default function MapView() {
     if (!location) return <div>Getting your location...</div>;
 
     return (
-        <>
-            {/* THIS PADDING TEST FAILS: NO COLOR IS VISIBLE */}
-            <div className="relative p-8 bg-blue-200 border-4 border-blue-600">
-                <div className="p-4 bg-white border-2 border-red-500">
-                    <p className="text-black font-semibold">Padding test content</p>
-                </div>
-            </div>
+        <div className="relative w-full h-screen">
             <div className="absolute top-5 left-5 z-50">
                 <MoveArrows pos={mapPos} setPos={setMapPos} />
                 <h1 style={{ background: "black", color: "white", padding: "2px 6px", borderRadius: "4px" }}>
@@ -147,6 +141,6 @@ export default function MapView() {
 
                 {USE_MOCKS && mapPos && <RecenterMap lat={mapPos.lat} lon={mapPos.lon} />}
             </MapContainer>
-        </>
+        </div>
     );
 }
