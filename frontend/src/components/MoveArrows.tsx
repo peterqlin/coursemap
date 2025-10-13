@@ -22,20 +22,20 @@ export default function MoveArrows({ pos, setPos }: MoveArrowsProps) {
                 className="bg-black text-white w-6 h-6 flex items-center justify-center rounded"
                 onClick={() => move("N")}
             >↑</button>
-            <div className="flex gap-6">
+            <div className="flex gap-1">
                 <button
                     className="bg-black text-white w-6 h-6 flex items-center justify-center rounded"
                     onClick={() => move("W")}
                 >←</button>
                 <button
                     className="bg-black text-white w-6 h-6 flex items-center justify-center rounded"
+                    onClick={() => move("S")}
+                >↓</button>
+                <button
+                    className="bg-black text-white w-6 h-6 flex items-center justify-center rounded"
                     onClick={() => move("E")}
                 >→</button>
             </div>
-            <button
-                className="bg-black text-white w-6 h-6 flex items-center justify-center rounded"
-                onClick={() => move("S")}
-            >↓</button>
         </div>
     );
 }
