@@ -103,13 +103,20 @@ export default function MapView() {
 
     return (
         <>
-            <div style={{ position: "absolute", top: 20, left: 20, zIndex: 1000 }}>
+            {/* THIS PADDING TEST FAILS: NO COLOR IS VISIBLE */}
+            <div className="relative p-8 bg-blue-200 border-4 border-blue-600">
+                <div className="p-4 bg-white border-2 border-red-500">
+                    <p className="text-black font-semibold">Padding test content</p>
+                </div>
+            </div>
+            <div className="absolute top-5 left-5 z-50">
                 <MoveArrows pos={mapPos} setPos={setMapPos} />
                 <h1 style={{ background: "black", color: "white", padding: "2px 6px", borderRadius: "4px" }}>
                     {getCurrentDay()}, {getCurrentTime()}
                 </h1>
             </div>
             <MapContainer
+                className="fixed"
                 center={[location.lat, location.lon]}
                 zoom={17}
                 zoomControl={false}

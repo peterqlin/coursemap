@@ -11,6 +11,7 @@ export interface ClassData {
     days: string;
     start_time: string; // "09:00"
     end_time: string;   // "09:50"
+    section_type: string;
 }
 
 export interface Location {
