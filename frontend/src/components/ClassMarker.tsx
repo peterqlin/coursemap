@@ -47,18 +47,19 @@ export default function ClassMarker({ classes }: Props) {
                         >
                             {/* Close button */}
                             <button
-                                className="absolute top-3 right-3 text-gray-600 hover:text-gray-800 text-2xl font-bold"
+                                className="absolute top-3 right-3 w-8 h-8 text-gray-600 hover:cursor-pointer hover:text-gray-800 text-2xl font-bold"
                                 onClick={handleCloseModal}
                                 aria-label="Close"
+                                type="button"
                             >
                                 ×
                             </button>
 
                             {/* Header */}
-                            <div className="mb-6">
+                            <div className="mb-4">
                                 <div className="text-2xl font-bold text-gray-800">{building_name}</div>
                                 {classes.length > 1 && (
-                                    <div className="text-sm text-gray-600 mt-1">
+                                    <div className="text-sm text-gray-600 mt-2">
                                         {classes.length} classes currently in session
                                     </div>
                                 )}
@@ -88,8 +89,7 @@ export default function ClassMarker({ classes }: Props) {
 
                                         {/* Time and room */}
                                         <div className="text-sm text-gray-800">
-                                            {toAmPm(cls.start_time)} – {toAmPm(cls.end_time)}{" "}
-                                            {cls.room && <span className="text-gray-600">| {cls.room}</span>}
+                                            {toAmPm(cls.start_time)} – {toAmPm(cls.end_time)} | Room {cls.room}
                                         </div>
                                     </div>
                                 ))}
