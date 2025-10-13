@@ -20,7 +20,7 @@ def get_classes(
     lon: float = Query(...),
     day: str = Query(...),
     time: str = Query(...),
-    radius: float = Query(200)  # meters
+    radius: float = Query(400)  # meters
 ):
     conn = get_connection()
     cur = conn.cursor()
