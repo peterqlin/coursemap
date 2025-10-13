@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
 from db import get_connection
-from utils import haversine
+from utils import haversine, merge_sections
 
 app = FastAPI()
 
@@ -29,7 +29,7 @@ def get_classes(
         SELECT s.id AS section_id, c.id AS course_id,
                c.subject, c.number, c.title,
                b.name AS building_name, b.latitude, b.longitude,
-               s.room, s.days, s.start_time, s.end_time
+               s.room, s.days, s.start_time, s.end_time, s.section_type
         FROM sections s
         JOIN courses c ON s.course_id = c.id
         JOIN buildings b ON s.building_id = b.id
@@ -39,7 +39,6 @@ def get_classes(
         """, (f"%{day}%", time))
     
     rows = cur.fetchall()
-    print(f"{radius=}")
 
     nearby_classes = []
     for row in rows:
@@ -50,6 +49,7 @@ def get_classes(
             nearby_classes.append(meeting_info)
     
     # sort by distance
+    nearby_classes = merge_sections(nearby_classes)
     nearby_classes.sort(key=lambda x: x["distance_m"])
     conn.close()
-    return [dict(r) for r in nearby_classes]
+    return nearby_classes

@@ -11,3 +11,21 @@ def haversine(lat1, lon1, lat2, lon2):
     c = 2*asin(sqrt(a))
     R = 6371000  # Radius of earth in meters
     return R * c
+
+def merge_sections(section_list):
+    """Scans the list of sections and removes any sections that share the same name, time, and location as another section."""
+    seen = set()
+    merged = []
+    for section in section_list:
+        key = (
+            section.get("subject"),
+            section.get("number"),
+            section.get("start_time"),
+            section.get("end_time"),
+            section.get("section_type"),
+            section.get("building_name")
+        )
+        if key not in seen:
+            seen.add(key)
+            merged.append(section)
+    return merged
