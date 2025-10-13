@@ -4,7 +4,7 @@ import L from "leaflet";
 import { useUserLocation } from "../hooks/useUserLocation";
 import { getNearbyClasses } from "../api/apiClient";
 import type { ClassData, Location } from "../types";
-import { getCurrentDay, getCurrentTime } from "../utils/time";
+import { getCurrentDay, getCurrentTime, toAmPm } from "../utils/time";
 import { haversine } from "../utils/distance";
 import "leaflet/dist/leaflet.css";
 import ClassMarker from "./ClassMarker";
@@ -103,19 +103,25 @@ export default function MapView() {
 
     return (
         <div className="relative w-full h-screen">
-            {USE_MOCKS && <div className="absolute top-1/2 left-1/2 z-50 -translate-x-1/2 translate-y-1/6">
-                <MoveArrows pos={mapPos} setPos={setMapPos} />
-                <h1 style={{ background: "black", color: "white", padding: "2px 6px", borderRadius: "4px" }}>
-                    {getCurrentDay()}, {getCurrentTime()}
-                </h1>
-            </div>}
+            {USE_MOCKS && <>
+                <div className="absolute top-1/2 left-1/2 z-50 -translate-x-1/2 translate-y-1/6">
+                    <MoveArrows pos={mapPos} setPos={setMapPos} />
+                </div>
+                <div className="absolute top-10 left-10 z-50 bg-black text-white px-2 py-1 rounded">
+                    Lat: {mapPos && mapPos.lat.toFixed(5)}, Lon: {mapPos && mapPos.lon.toFixed(5)}<br />
+                    Day: {getCurrentDay()}, Time: {toAmPm(getCurrentTime())}
+                </div>
+            </>
+            }
             <MapContainer
                 className="fixed"
                 center={[location.lat, location.lon]}
                 zoom={17}
+                minZoom={17}
+                maxZoom={18}
                 zoomControl={false}
                 dragging={false}
-                scrollWheelZoom={false}
+                scrollWheelZoom="center"
                 doubleClickZoom={false}
                 style={{ height: "100vh", width: "100vw" }}
             >

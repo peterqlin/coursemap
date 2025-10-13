@@ -36,9 +36,6 @@ export default function MoveArrows({ pos, setPos }: MoveArrowsProps) {
                 className="bg-black text-white w-6 h-6 flex items-center justify-center rounded"
                 onClick={() => move("S")}
             >↓</button>
-            {pos && <p className="bg-black text-white px-2 py-1 rounded">
-                Lat: {pos.lat.toFixed(5)}, Lon: {pos.lon.toFixed(5)}
-            </p>}
         </div>
     );
 }

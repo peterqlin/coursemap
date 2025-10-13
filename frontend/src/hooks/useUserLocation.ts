@@ -10,7 +10,7 @@ export function useUserLocation() {
 
     const startTracking = () => {
         if (USE_MOCKS) {
-            setLocation({ lat: 40.102, lon: -88.227 });
+            setLocation({ lat: 40.10750, lon: -88.22720 });
             return;
         }
 
