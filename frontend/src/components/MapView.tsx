@@ -103,12 +103,12 @@ export default function MapView() {
 
     return (
         <div className="relative w-full h-screen">
-            <div className="absolute top-5 left-5 z-50">
+            {USE_MOCKS && <div className="absolute top-5 left-5 z-50">
                 <MoveArrows pos={mapPos} setPos={setMapPos} />
                 <h1 style={{ background: "black", color: "white", padding: "2px 6px", borderRadius: "4px" }}>
                     {getCurrentDay()}, {getCurrentTime()}
                 </h1>
-            </div>
+            </div>}
             <MapContainer
                 className="fixed"
                 center={[location.lat, location.lon]}
