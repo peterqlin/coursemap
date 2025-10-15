@@ -1,8 +1,12 @@
-import sqlite3
+import os
+from dotenv import load_dotenv
+from sqlalchemy import create_engine
 
-DB_PATH = "../data/classes_fa25_updated.db"
+load_dotenv()
+
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+engine = create_engine(DATABASE_URL, pool_pre_ping=True)
 
 def get_connection():
-    conn = sqlite3.connect(DB_PATH)
-    conn.row_factory = sqlite3.Row
-    return conn
+    return engine.connect()

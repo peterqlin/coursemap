@@ -1,5 +1,6 @@
 from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
+from sqlalchemy import text
 from db import get_connection
 from utils import haversine, merge_sections
 
@@ -7,7 +8,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],  # your frontend URL
+    allow_origins=["*"],  # You can restrict later
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -22,23 +23,35 @@ def get_classes(
     time: str = Query(...),
     radius: float = Query(400)  # meters
 ):
-    conn = get_connection()
-    cur = conn.cursor()
-    # example endpoint: http://127.0.0.1:8000/classes?lat=40.105757082531156&lon=-88.22811081179489&day=M&time=09:00&radius=50
-    cur.execute("""
-        SELECT s.id AS section_id, c.id AS course_id,
-               c.subject, c.number, c.title,
-               b.name AS building_name, b.latitude, b.longitude,
-               s.room, s.days, s.start_time, s.end_time, s.section_type
-        FROM sections s
-        JOIN courses c ON s.course_id = c.id
-        JOIN buildings b ON s.building_id = b.id
-        WHERE s.days LIKE ?
-        AND time(?) BETWEEN time(s.start_time) AND time(s.end_time)
-        AND b.latitude IS NOT NULL AND b.longitude IS NOT NULL
-        """, (f"%{day}%", time))
-    
-    rows = cur.fetchall()
+    # Query Supabase / PostgreSQL
+    with get_connection() as conn:
+        result = conn.execute(
+            text("""
+                SELECT
+                    s.id AS section_id,
+                    c.id AS course_id,
+                    c.subject,
+                    c.number,
+                    c.title,
+                    b.name AS building_name,
+                    b.latitude,
+                    b.longitude,
+                    s.room,
+                    s.days,
+                    s.start_time,
+                    s.end_time,
+                    s.section_type
+                FROM sections s
+                JOIN courses c ON s.course_id = c.id
+                JOIN buildings b ON s.building_id = b.id
+                WHERE s.days ILIKE :day_pattern
+                  AND ((:time)::time BETWEEN s.start_time::time AND s.end_time::time)
+                  AND b.latitude IS NOT NULL AND b.longitude IS NOT NULL
+            """),
+            {"day_pattern": f"%{day}%", "time": time}
+        )
+
+        rows = result.mappings().all()
 
     nearby_classes = []
     for row in rows:
@@ -47,9 +60,7 @@ def get_classes(
             meeting_info = dict(row)
             meeting_info["distance_m"] = distance
             nearby_classes.append(meeting_info)
-    
-    # sort by distance
+
     nearby_classes = merge_sections(nearby_classes)
     nearby_classes.sort(key=lambda x: x["distance_m"])
-    conn.close()
     return nearby_classes
