@@ -1,4 +1,4 @@
-# Crash-A-Class — Visualization of Nearby Classes
+# coursemap — Visualization of Nearby Classes
 
 **Project:** A single-page interactive map that shows classes happening nearby in real time, based on the user's location and time of day.
 

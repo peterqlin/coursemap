@@ -1,5 +1,5 @@
 [project]
-name = "crash-a-class-backend"
+name = "coursemap-backend"
 version = "0.1.0"
 description = "Backend for a live map of nearby classes using FastAPI and SQLite"
 authors = [{ name = "Peter Lin", email = "peter.lin2305@gmail.com" }]
