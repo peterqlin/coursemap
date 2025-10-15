@@ -10,10 +10,10 @@ export default function MoveArrows({ pos, setPos }: MoveArrowsProps) {
     const step = 0.0001; // ~11m per step
 
     const move = (dir: string) => {
-        setPos((p: Location | null) => (p && {
-            lat: p.lat + (dir === "N" ? step : dir === "S" ? -step : 0),
-            lon: p.lon + (dir === "E" ? step : dir === "W" ? -step : 0),
-        }));
+        setPos(pos && {
+            lat: pos.lat + (dir === "N" ? step : dir === "S" ? -step : 0),
+            lon: pos.lon + (dir === "E" ? step : dir === "W" ? -step : 0),
+        });
     };
 
     return (
