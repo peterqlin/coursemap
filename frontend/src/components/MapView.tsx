@@ -124,7 +124,7 @@ export default function MapView() {
             <MapContainer
                 className="fixed"
                 center={[location.lat, location.lon]}
-                zoom={17}
+                zoom={18}
                 minZoom={17}
                 maxZoom={18}
                 zoomControl={false}
