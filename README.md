@@ -1,49 +1,13 @@
-# coursemap — Visualization of Nearby Classes
+# coursemap uiuc
 
-**Project:** A single-page interactive map that shows classes happening nearby in real time, based on the user's location and time of day.
+A single-page interactive map that shows classes happening nearby in real time, based on the user's location and time of day.
 
 **Tech Stack:**
 
 * **Frontend:** React + TypeScript + Vite + Leaflet.js
-* **Backend:** FastAPI + SQLite
-* **Database:** SQLite
-* **Other:** Axios for API calls, TailwindCSS (optional for styling)
-
-## Project Structure
-
-```
-/project-root
-│
-├─ backend/
-│   ├─ app.py
-│   ├─ db.py
-│   ├─ utils.py
-│   └─ pyproject.toml
-│
-├─ frontend/
-│   ├─ index.html
-│   ├─ vite.config.js
-│   ├─ package.json
-│   └─ src/
-│       ├─ main.tsx
-│       ├─ App.tsx
-│       ├─ components/
-│       │   ├─ MapView.tsx
-│       │   └─ ClassMarker.tsx
-│       ├─ utils/
-│       │   ├─ distance.ts
-│       │   └─ time.ts
-│       ├─ hooks/
-│       │   └─ useUserLocation.ts
-│       ├─ api/
-│       │   └─ apiClient.ts
-│       └─ types/
-│           └─ index.ts
-│
-└─ data/
-    └─ classes.db
-```
-
+* **Backend:** FastAPI + PostgreSQL
+* **Database:** PostgreSQL
+* **Other:** Axios for API calls, TailwindCSS
 
 ## Setup
 
