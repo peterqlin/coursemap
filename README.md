@@ -5,8 +5,8 @@ A single-page interactive map that shows classes happening nearby in real time, 
 **Tech Stack:**
 
 * **Frontend:** React + TypeScript + Vite + Leaflet.js
-* **Backend:** FastAPI + PostgreSQL
-* **Database:** PostgreSQL
+* **Backend:** FastAPI + SQLite
+* **Database:** SQLite
 * **Other:** Axios for API calls, TailwindCSS
 
 ## Setup
